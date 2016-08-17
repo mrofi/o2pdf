@@ -27,10 +27,11 @@ class OfficeToPdf
             if ($response->getStatusCode() == '200') {
                 $body = $response->getBody();
                 $content = $body->getContents();
-                $results = array_shift(array_filter(explode(',', $content), function ($item) {
+                $results = array_filter(explode(',', $content), function ($item) {
                     return strpos($item, '\u003d"');
-                }));
-                $url = str_replace(['\u003d"', '"'], '', $results);
+                });
+                $urls = array_shift($results);
+                $url = str_replace(['\u003d"', '"'], '', $urls);
                 return $url ? $url.'=?download=true' : null;
             }
         } catch (TransferException $e) {
