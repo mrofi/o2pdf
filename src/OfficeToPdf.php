@@ -30,11 +30,11 @@ class OfficeToPdf
                 $results = collect(explode(',', $content))->filter(function ($item) {
                     return strpos($item, '\u003d"');
                 })->first();
-                $url = str_replace(['\u003d"', '"'], '', $results).'=?download=true';
-                return $url;
+                $url = str_replace(['\u003d"', '"'], '', $results);
+                return $url ? $url.'=?download=true' : null;
             }
         } catch (TransferException $e) {
-          //
+            return null;
         }
     }
 }
