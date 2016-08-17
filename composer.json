@@ -1,0 +1,21 @@
+{
+    "name": "mrofi/o2pdf",
+    "description": "API to convert office files to PDF directly ",
+    "homepage": "https://github.com/mrofi/o2pdf",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mokhamad Rofiudin",
+            "email": "mokh.rofiudin@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.3",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "O2Pdf\\": "src/"
+        }
+    }
+}
