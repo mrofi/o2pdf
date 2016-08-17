@@ -27,9 +27,9 @@ class OfficeToPdf
             if ($response->getStatusCode() == '200') {
                 $body = $response->getBody();
                 $content = $body->getContents();
-                $results = collect(explode(',', $content))->filter(function ($item) {
+                $results = array_shift(array_filter(explode(',', $content), function ($item) {
                     return strpos($item, '\u003d"');
-                })->first();
+                }));
                 $url = str_replace(['\u003d"', '"'], '', $results);
                 return $url ? $url.'=?download=true' : null;
             }
